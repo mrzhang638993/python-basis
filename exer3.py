@@ -17,7 +17,7 @@ fishc="""
 print(fishc)
 
 
-
+#  需要注意的是python默认是换行的，需要不换行的话需要增加end的相关的说明信息
 #九九乘法表的输出打印是存在问题的，需要关注
 #  需要注意的是print打印的时候，默认的对应的是输出换行的操作的
 #打印九九乘法表
@@ -25,8 +25,8 @@ i=1
 j=1
 while i<=9:
     while j<=i:
-        print(j,i,(i*j))  
+        print(str(j)+"X"+str(i)+"=",(i*j),end="\t")  
         j=j+1
-    #print("\n")
+    print("\n")
     i=i+1
     j=1
