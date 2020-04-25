@@ -35,13 +35,13 @@ else:
 score=int(input("请输入你的考试成绩"))
 if score<60:
     print("D")
-elif score>=60&&score<80:
+elif score>=60 and score<80:
     print("C")
-elif score>=80&&score<90:
+elif score>=80 and score<90:
     print("B")
-elif  score>=90&&score<100
+elif  score>=90 and score<100:
     print("A")
-elif  score==100
+elif  score==100:
     print("S")
 
         
