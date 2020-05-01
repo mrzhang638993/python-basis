@@ -64,8 +64,8 @@ elif y < z:
 else:
     small = z
 """
-#small=if x<y else y
-#small=if y<z else z
+#small=x if x<y else y
+#small=y if y<z else z
 
 #  5 次
 """
