@@ -99,11 +99,25 @@ print(str2.center(40))  # 对应的输出字符串的时候进行居中处理。
 print(str2.count('xi'))  # 对应的统计str2当中xi字符串出现的次数
 print(str2.endswith("xi"))   # 判断字符串是否是xi结尾的字符串
 print(str2.find('efc'))  # 查找字符串中efc是否出现，没有的话反悔-1
-print(str2.index('efc'))      #返回对应的数值信息
-print(str2.istitle())  # 判断字符串是否是标题，标题对应的是大写字母开头的，后面的都是小写字母的。
-print(str2.join('xfc'))  #  字符串中的每一个字符后面填充xfc的字符串。
-print(str2.lower())     # str2中的字符串全部转化为小写字符。
+#print(str2.index('efc'))      #返回对应的数值信息
+#print(str2.istitle())  # 判断字符串是否是标题，标题对应的是大写字母开头的，后面的都是小写字母的。
+#print(str2.join('xfc'))  #  字符串中的每一个字符后面填充xfc的字符串。
+#print(str2.lower())     # str2中的字符串全部转化为小写字符。
 #  split 进行字符串的自动的切割操作
+
+#  字符串的格式化操作，按照统一的格式输出字符串。
+#  位置参数格式化输出
+"{0} love {1}.{2}".format("i","FishC","com")
+#  关键字格式化输出
+"{a} love {b}.{c}".format(a="i",b="FishC",c="com")
+# 需要注意的是位置参数需要位于关键字参数之前的
+
+"{{0}}".format("不打印")  # 对应的输出的内容为 {0}
+'{0:.1f}{1}'.format(27.658,'GB')  # 对应的内容输出为 27.7GB
+'%c'  % 97
+'%c,%c,%c'  % (97,98,99)
+'%s'   % 'i love FishC.com'
+'%d + %d = %d'  %(4,5,4+5)
 
 
 
