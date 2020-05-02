@@ -104,7 +104,6 @@ print(str2.find('efc'))  # 查找字符串中efc是否出现，没有的话反�
 #print(str2.join('xfc'))  #  字符串中的每一个字符后面填充xfc的字符串。
 #print(str2.lower())     # str2中的字符串全部转化为小写字符。
 #  split 进行字符串的自动的切割操作
-
 #  字符串的格式化操作，按照统一的格式输出字符串。
 #  位置参数格式化输出
 "{0} love {1}.{2}".format("i","FishC","com")

@@ -1,7 +1,15 @@
-# 字符串的常见的方法操作
-str1='I love fishc.com'
-# 切片操作
-print(str1[:6])
-print(str1[5])
-print(str1[:6]+'插入的字符串'+str1[6:])   # 创建了新的字符串的，不是使用原来的字符串的。
 
+
+
+
+
+
+
+
+
+member = ['小甲鱼', '黑夜', '迷途', '怡静', '秋舞斜阳']
+member=member[:1]+[88]+member[1:2]+[90]+member[2:3]+[85]+member[3:4]+[90]+member[4:5]+[88]
+#  采用迭代器的方式实现迭代操作
+it=iter(member)
+for x in it:
+    print(x,next(it))
