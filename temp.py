@@ -1,15 +1,10 @@
+number=input("请输入一个整数(输入Q结束程序):")
+if number.isdigit():  #  input输入的话，对应的使用是字符串的，需要进行处理
+    dest=int(number)
+    print("十进制->十六进制  : ","%#x" % dest)
+    print("十进制->八进制  : ","%#o" % dest)
+    print("十进制->二进制  : ",bin(dest))
+else:
+    print("输入错误，请重新输入")
+    number=input("请输入一个整数(输入Q结束程序):")
 
-
-
-
-
-
-
-
-
-member = ['小甲鱼', '黑夜', '迷途', '怡静', '秋舞斜阳']
-member=member[:1]+[88]+member[1:2]+[90]+member[2:3]+[85]+member[3:4]+[90]+member[4:5]+[88]
-#  采用迭代器的方式实现迭代操作
-it=iter(member)
-for x in it:
-    print(x,next(it))
