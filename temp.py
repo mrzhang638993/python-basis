@@ -1,10 +1,7 @@
-count=0
-# 从12个求中选择8个球进行组合操作
-for i in range(2,7):
-    # 从绿色球中至少可以获得2个球，最多可以获取到6个球
-    #  需要判断球的数量。不能够超过3个球
-    # 需要循环处理一下
-    for j  in range(0,3 if 8-i>=3 else 8-i):
-        print(i,j,8-i-j)
-        count=count+1
-print(count)
+# 字符串的常见的方法操作
+str1='I love fishc.com'
+# 切片操作
+print(str1[:6])
+print(str1[5])
+print(str1[:6]+'插入的字符串'+str1[6:])   # 创建了新的字符串的，不是使用原来的字符串的。
+

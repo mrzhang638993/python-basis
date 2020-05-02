@@ -83,11 +83,32 @@ print(poetry)
 ## 一次性的打印3000遍的字符串
 print("我每天爱你三千遍"*300)  # 字符串的乘法
 
-
 # 字符串的操作
 """
 下面的语句报错的原因在于int不能显式的转化为字符串的。
 """
 print("i love  fish.com"+str(8))
+# 字符串的常见的方法操作
+str1='I love fishc.com'
+# 切片操作
+print(str1[:6])
+print(str1[:6]+'插入的字符串'+str1[6:])
+str2='DAXIExiaoxie'
+print(str2.casefold())  # 对应的进行大小写的转换操作
+print(str2.center(40))  # 对应的输出字符串的时候进行居中处理。
+print(str2.count('xi'))  # 对应的统计str2当中xi字符串出现的次数
+print(str2.endswith("xi"))   # 判断字符串是否是xi结尾的字符串
+print(str2.find('efc'))  # 查找字符串中efc是否出现，没有的话反悔-1
+print(str2.index('efc'))      #返回对应的数值信息
+print(str2.istitle())  # 判断字符串是否是标题，标题对应的是大写字母开头的，后面的都是小写字母的。
+print(str2.join('xfc'))  #  字符串中的每一个字符后面填充xfc的字符串。
+print(str2.lower())     # str2中的字符串全部转化为小写字符。
+#  split 进行字符串的自动的切割操作
+
+
+
+
+
+
 
 
