@@ -1,10 +1,11 @@
-number=input("请输入一个整数(输入Q结束程序):")
-if number.isdigit():  #  input输入的话，对应的使用是字符串的，需要进行处理
-    dest=int(number)
-    print("十进制->十六进制  : ","%#x" % dest)
-    print("十进制->八进制  : ","%#o" % dest)
-    print("十进制->二进制  : ",bin(dest))
-else:
-    print("输入错误，请重新输入")
-    number=input("请输入一个整数(输入Q结束程序):")
+name=input("请输入带查找的用户名:")
+score=[['迷途',85],['小布丁',65],['附录娃娃','95'],['怡静',90]]
+result=False 
+for each in score:
+    if name==each[0]:
+        print(name+"的得分是:",each[1])
+        result=True
+        break
+if not result:
+    print("查找的数据不存在")
 
