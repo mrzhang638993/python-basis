@@ -1489,4 +1489,90 @@ for index,each in enumerate(str2):
 print(result)
         
 
-    
+# 下面是lamdba表达式的答案
+g=lambda x,y=3: x*y
+print(g(6,8))
+t=lambda x : x if x % 2 else None #
+print(t(8))
+def  test(x):
+    if x%2:
+        return x
+    else:
+        None
+print(test(9))
+temp=range(1,100)
+result=filter(lambda x:x%3 ==0,temp)
+#print(list(result))
+# 列表推导式的操作 evens = [i for i in range(10) if i % 2 == 0]
+events=filter(lambda x:x%2!=0,range(10))
+#print(list(events))
+# 使用lamdba以及filter完成灵活多变的列表操作
+# list(zip([1, 3, 5, 7, 9], [2, 4, 6, 8, 10]))
+list1=[1,3,5,7,9]
+list2=[2,4,6,8,10]
+def assemble1(x,y):
+    return [x,y]
+listResult=list(map(lambda  x,y:assemble1(x,y),list1,list2));
+print(listResult)
+#  递归函数操作
+def power1(x,y):
+    if y==1:
+        return x
+    else:
+        return x*power1(x,y-1)
+print(power1(2,3))
+#  求解最大公约数
+def find_divisor(a,b):
+    '''这个函数用来求两个正整数的最大公约数'''
+
+    #下面的操作保证a永远是较大的数，这样对于我们传参的要求就低了，传入数字的大小顺序无所谓
+    if a<b:
+        a,b=b,a
+    #下面是基线条件，当余数为0时，b就是最大公约数
+    if a%b==0:
+        return b
+    #不符合基线条件时，就要继续寻找最大公约数，但是参数要变成b和ab的余数，实现递归
+    else:
+        return find_divisor(b,a%b)
+print(find_divisor(88,24))
+# 求解最大公约数存在很多的算法的，需要进行算法的关注的，对应的实现相关的算法逻辑
+
+# 递归求解将10进制转化为2进制数值
+def   diguiqiujie(n):
+    if n//2==0:
+        return n%2
+    else:
+        return str(n%2)+str(diguiqiujie(n//2))
+print(diguiqiujie(5))
+#递归参数分解 get_digits(12345) ==> [1, 2, 3, 4, 5]
+def diguifenjie(n):
+    global list1
+    if n//10==0:
+        list1.insert(0,n%10)
+    else:
+        list1.insert(0,n%10)
+        n //=10
+        diguifenjie(n)
+list1=[];
+diguifenjie(12345)
+print(list1)
+# 递归回文字符串操作
+def huiwenzifuchuan(ch):
+    length=len(ch)
+    if  not ch[0]==ch[length-1]:
+        return "不是回文字符串"
+    elif length==2 and ch[0]==ch[1]:
+        return "是回文字符串"
+    else:
+        return huiwenzifuchuan(ch[1:length-1])
+print(huiwenzifuchuan("我是谁"))
+# 递归编程求解问题
+"""
+有5个人坐在一起，问第五个人多少岁？他说比第4个人大2岁。问第4个人岁数，他说比第3个人大2岁。问第三个人，又说比第2人大两岁。问第2个人，说比第一个人大两岁。最后问第一个人，他说是10岁。请问第五个人多大？
+"""
+def  caculateYear(n):
+    if n==1:
+        return 10
+    else:
+        return 2+caculateYear(n-1)
+print(caculateYear(5))

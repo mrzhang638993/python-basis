@@ -1,143 +1,78 @@
-##str1="%%$@_$^__#)^)&!_+]!"
-##length=len(str1)
-##lenMeta=[1]*length
-##result=zip(str1,lenMeta)
-##dest=(())
-##for idx,each in enumerate(result):
-##    if each[0] in str1:
-##        if each[1]==0:
-##             dest=dest[:]+(each[0],1)
-##        else:
-##             dest=dest[:idx]+(each[0],each[1]+1)+dest[idx:]
-##print(dest)
-
-#  不要使用元祖，使用list的方式更加的好
-##str1=r"""%%$@_$^__#)^)&!_+]!"""
-##dest=[]
-##flag=False
-##for each in str1:
-##    if len(dest)==0:
-##        dest.append((each,1))
+##list1=[1,3,5,7,9]
+##list2=[2,4,6,8,10]
+##def assemble1(x,y):
+##    return [x,y]
+##listResult=list(map(lambda  x,y:assemble1(x,y),list1,list2));
+##print(listResult)
+##def make_repeat(n):
+##        return lambda s : s * n
+##
+##double = make_repeat(2)  # s->s*2   double=16
+##print(double(8))
+##print(double('FishC'))
+##def power1(x,y):
+##    if y==1:
+##        return x
 ##    else:
-##        # 元素不存在与列表中的话，需要增加的，元素第一次出现需要增加元素
-##        for idx,strCon in enumerate(dest):
-##            if each==strCon[0]:
-##                dest=dest[:idx]+[(each,strCon[1]+1)]
-##                flag=True
-##                break
-##            # 彻底没有找到,for循环完成之后，对应的一直是True的，存在问题的
-##        if  not flag:
-##            dest.append((each,1))
-##        flag=False
-##print(dest)
-##            
-str2="""ACFlCTLIQlAIVMTqHFkswqbDDHtpgcWaXSSglUYKE
-lqNsYCyaQXBzrFUbkAUAWAKrDgDtAlGMBqWQhpEwquZqWZJpslUfMllCwWptqINjrOBTLuPzwvXNbLCx
-oFRritKRpJgBOaGPZdkUzvYnvYmAlEsVmKRXqyQUOdCBqLYyboOYeAQNLnkuiDXCiNiksSSRpDMVQQgs
-TmYThnppfKSmkpjjceGLaMOvYgsvNkGENKgGtUSzVPlLMeephDKrWGNpAxBqRiCnQIuKwDZurIRsznUp
-xhstMWpHdZzqeEnttlAHiWbhbIJpwKBAGsFWthBiwBDKTFzIUamELZJFLbmqOmwBIYBJIofAUyxTLUEm
-LcOXzjIHFcfUfEWccbWzhVuIZMdTVsOaNsLTpHjrvFaYTnJUrqaYnUmbobfOXXtkjKjFUEhVNlPWeaIY
-uABNuEDKFWiUaqQiBHGsgEmDSKiJKLkkzFWlobXIyUlDzGcwDnEOwwWxgFpebsslmKItazIYctPROSJp
-ImDHusQIkoFQSmuqwdcPNERvflfHtkGTrtbQXqZUsazoxmbVTPIuuxKvfALAaGnIuIZwczCcoIRMncBs
-timFGHPJPaHMPTLjsBjIwbbzKyghaDTUStzJceaYAneywwpvdiUJifPHtXmAwZPChWsDmwonzeeQCEiB
-xWsJLAtrdVEOBxEaYiSabHdUwlXlDOAKzZUwozJoBGvnFttDkXdYdjQSzzhTIPfYpWVFdiFIqSbyPZIi
-VoXunBPbAJVMWluPcIfHmjPeHaTyClCvTOucEYEZXbVDiZMsfeuruDGMmQEsHutzvzVmWvCoPRguBiHh
-taTeaguPmNuAxzYJLEcdoApfIFBaLUqettjTJNlHZYlJZRRoKXEvFnoUHdPjDuXuTAubGODkHAokpItw
-SlEwhjrUSlfMawWlTMciWAzVcgPcqCHIaogokYAWGsvWZzBfJqzxIkCNvHDvBkOMCyeYXzVVuRJLQIOy
-BMoVPgFLOagDxyPfWxTtZQNCLOrVVclPzMNYruNUyMOBKxBvinxuGMAAfndhPsROtkOJAAJQSxpmTzXm
-CmEwZOhlItvETUneqvdKLghLyREjuJWRFjVVuNMiPuvvmRaEUmjCXDVuMRAvBuHUYGKPXthWISIbueRp
-uvxpmqclmrXpAGFrxhJGxQwlrbkHEmcEUooCoPqGzbrCfIWmtUKmzzXvcqbhxKcAwXCNjbJDWDndKiLK
-HwaFKyhXJQgHjIaTfIJrkhUpTHJZebRertDigQtDKxGerMRgHWFTrqqZlcBjAUfTZdFlZCAEZnhzgTIy
-gJSsWJjFcCVoFonAfKPTOhTxjxTRtzSKLoIOScEwBCDvWFDVGpBOpijqdwvugoYsyuIOZJTcySDrzy
-wBxediHOIYgasrUIDsNZcParqTGfTaBZHoSssXGtiCVvLReyoiitzMpsouqUeMHGWwDMgBaQTRkxPwNP
-XsvyFVXfjgKuamMTsEsbeKDgAdVndyDleenPBcXWKGPcDsALDajkCEGufvbtyXUZnelqISbQnHphDoTH
-RMIxMKclpWSvQHkzRhdAehBVaKYaXRPMpGaeRxvTRVFfewirvIDoGvYTAvKSoMFCLUNVFVKrYMeYtBrS
-KgiBOjvliNOHLrmztypGhQjtpEQwzVfpVqsTUPvOCPzgqOuvLXJBQZHLmSwGTxEMgCAbogXombCiBDNX
-BvGtXjrGWbWHtNCoRuqIZPhBQXZiNUhbmzOiyByAoMSBvusppiPVibIqmLXwXEVfcEAyNeUxaEZThULu
-mkGmoLrpOEktwRluXvOmmfEWxZkxUNIqZKuzbaUmLKBYrXMmdOYLEzljzbSJnqRbSiAFyUNyyieKITkh
-mvkKyosXKCaTsXQIKczJmxuqIEKeGGGwZyWTolQynlWngjDzFMlwhJFEmODeycbEfxgSRbIXySfwlhZZ
-BUBhKyGBHRzWGRXAzarcmSDORvaOMOqYlcVIMwlHGtrLMhFWioqeKfvsJdTXmfQzavzSzCRrVzLFMaBT
-DMOPFJcjzXcPvBkzacRmVKTQAvVobGRBypFHvoUdjvBhwWXVdDjvfJOocyIHbMqZGMaRaaFFnmtvTSkY
-nIHbmPAtuEszMDFURBYxcOJXKMvJbfSbhiaacxhxiZBnoHTcFeqXQfjTqpcMKFpvvzkpSxlDxSlhikFZ
-XSplcknpxiZfwUwGsrfpBUkevEiwndkKrVpWKufWpLTWXcyyXehOcDfnzgTAkhwOAcaiHqJWzsuAvMyD
-pDJgeCdAJMwatRfcpKQGTkwxHracsYOlZeXoGthHIRfDBYzhuGEQRKFRnqSEbWDCJObWSAoSwFzVZEnI
-rVBwXibUaTwnSTwRmIwkIgoGPRiOMLOTvnzEBBCfcugYZwGSsHRKCJoRsxxzRkKwnTRcRNfbMGssqmXV
-IKYzyWHIsCjdzxiHEtvHaufVgcoqVkqIQertevTUTIVMYlNXCGEUzQowqsFpciURKoUwqCRogxeghOWs
-cMnuAathgFvNIVqqXpmdJDJPhXQpZCyNbTYktMyTUtQEBeQBhEZzqHotmYREADhFodlcPmTMutBZyefW
-sBmsnUbVnHUGAyaDirMoowBwXnzrmfHJgfpAquFoHTuvQvIJcjqiqVdntXbgwpVywbsKxqUMNxYVxBmQ
-OAcxOAVPuJeOgABYEHhevhnUOgCUuTBAhJcUGsasbMInGCbHnHXWDdXijDRkUYFuOytTcMPtWklmTHTR
-XFTfcFfSSqFUFbQVCKEjUOLveXtsHrIfkphXyDkRELnaTfuaZUClLqbdpWAREJHJpycYRDjElqlVeNya
-kTCjDpvFrdnlXogrDZdQzAYaePDdfvHWdcaQGgrrHKBdMnMYbsikbkffVsITSUhEapmLGQYbHoiKGRcg
-GPLeEvmCOAkGIuDBdnYPlzuUmLOfetGXpbTbPjjWCZiOJxlDazSbEPVpnNLDsLiwlgleiCdPezQwnNWT
-ECLuRGpfJZlnZtcghLucmvlOZNwXaikbKGmoGZJIcsfNnmaHIcPXiEYDHjLKpVtNsqemAmaiTIzvLqlU
-mlcvraikZozZwBoExUkELoiaAbTAkqDhrARHQyAvWvYUjthfWjZqbQNTnkgmySsORxGcxouYcyCSkjmC
-fpTGOlFoXWLINurMZdQURRnZCiZqsEKeVVZdFMnaoUepdAdARtUuXTvkGzmpEVNZiYSWJAwkcSKgAWTD
-mUNVxVebIiavuOAxWUBkuUkXCYtRoZhVNwCZGlaANNpBvXgSDeLURUdQnQteKAXbGlOLGYYYCzCGjzua
-UmrdPYuRrUBvLFfwBGTiABTmpANdPCptqKwWXARMKrtmbggOBDgNkeHzNUCIXUIuOAavRbLTnzNNRgzL
-boTJooLJIdVFbbjWNngnzPznJglCLEWqulqzSuAyvqYdivDqxEtYPKTwVheFmDidEOnLqjPHBcjoOVvt
-MCDmQfwNxkOPuxiJqLQOPRAGJappmpikgmrvRAlKjFjTlaznQldBJmzSMDvCWghWOgfhfkHFZBNdbmMf
-MsaQHrtJQvZuGFCrPVBNSNZBFZRdpmQNZYZXpkGjXRAXhELlxDfGhiXwgAUujQbqUCiKaRIYruNDRDlL
-zInUkJBpySRZoqwQlqmoxADBjjtGjFPLTkcexYGwGYlANZQaXNgKkPXUUqlViVzxPxxtMQPqOxTcChCg
-dvKNliVwzRfMmSsBFeuePnbmVqvyfdOXnZpUopEqfCMnnXpfZnNYwNKiZFPUWWmNCMibsyQEhiodVjTz
-UxsicVsZNMXyvBLrdJxGGeCPEutNCzYBRamXwRlmVdqUTPnUoAWaVDshgTHZhvhVlLZsoqbyqOjJMPac
-hHqiCKhgFkDUhUDSwsrEwaBrKhXINTjYmHvsTyFdRHliydbfQtRFZcsSTfcSfqyIgQuXLZnrdAwylBmW
-BRbmVwdoNFcnoxMKHaYOhgihIsKitcrgEkfjIOKsDPOadFhMwVSKWeCfxxxfWjgNiGDaiYDtMhCgedOR
-nTYoeVrpGsyDIsuKhffqaEqoqfWukaQlcUShYicuZAdoYVGvRchUgcmNwxQGogDvKhyAkIuqHCIXQfXp
-CtkSSTXTugolUKfqSzugIOpyHhIlcTjDBTKPqcyaRhmgFdSBkYurnvnukNGVoxpZBFmwIEmehuaUcoeu
-btkjJqKcAAqxgrKcoRGuqHVUHqKgEaqRCIXlaTqaUewJBEWnTnTJIDYdLeGUMDfndHPYTAGQbhxreADo
-WZtdvbJVnNGRNvlAsqIPlpXSXEZGBdqVyNCCwylcXprVoGqnPXZioKnqbdrYlDhbsTVDJqRQKoPtQXzu
-RnrGgCfYfeRRxiihjItxHurPwtYJoObDzlEABeIRxQocvWrJtyWchmZXJdYvTgicUircdiMKYAkNbdKu
-gPpzXnTQIZxtIhvfBfjIHRaDXbYExxYBvrejpEaVHlinHlYRrhsbChnAwTKlQtHntqcqiXZwTUEdlsVy
-WFdZNRfqzkhWzeKMGmkuKoSkuSZRkddsuBNFVMFLPeUkLwCCDKagNjMZwtHcVcEEKyjAYubHipuqNjaV
-JukystpMZrhBgLqRVMpaIPsyAvYIsBDVqKNCMLqLwyhJhuWDdCPBgSzJTLkJvaGPirOFwfuMtkyXeKoZ
-rGPRJqXyhdYNOXVSqGvbSPozAbjhpyfgGVuNUYaRQomzrTtzAMJnYnyvDnuBkbVvmYzhlhqmwgCZaGJG
-GGRbaFdfnDlUfCfhpDWTkWfpUDuUksJvRFNxVYBKGoxBCdhmYZwyDPzWihcQXgByRbYxWZslVsbuTHTf
-vaulICCTRkkiYuYoqFdzuxsqOBkzEJHbNXhSnHYxyeGoEklCeaUVEtjxmXyOEzcpsAhfKCTejxOxwGYh
-eLtoPpPINviTCHUsgzSkycIxtvekMaoZkBIyLboyvMxxaqfviBxkSALNjiNYqGTypcZDvHonaVBZCSLp
-SjRTsJmDuPwKnYwCdTprFvbXnrhARNToXpryIfEoIwSWIdfSKeOHDYwgyUvwXXpKUKQEiyZxCsTkAjME
-hdxShAAUYJTkprXuFITxxJuKMiphRAyAeUFZgknMMLvUaSjiMlGmLARvTMpllxEQyfvEqkcONHVFcaTW
-tqcbVrgeTLTGuJsrjZdYrrjtoLKcEfjkIhjzXgEkYhZggujFJuQlVtSqvuejtxAEqjgXrYjmwLkSRmXp
-pkTfONxRyAxRYqJccLxuhabwMTWfwLTlzuVGJtVJOXxwKjFIZENpGHwRvTRitDBQBesRYATKhmWmmmbP
-EXOzdBHNeghlqpjJFmzXyADNHQNEThWDyMsGsTmyFnywIPvDSIcxHbKQHgmJEcfsPzYvSYIbQjnTAgzF
-UfZAbwfgCMRxtmZQQyayJFFhCSVeeUcQzSLWqhENNUpyLZaJsQsFQsPyFIjGtcmoJaFQGKTFtKUBdBBo
-xECKHgYSMcBWnzRvPyihfjwyjhTTavfYqOrbrgZDSrwVYFjNsdxLJIigfMgythUoUIVSydOnfhAaesXZ
-kfyDztQiBCMHjfEGLFllxfejLJjanZVRENsXhIxSWDgbvHHOAFtHzqdfquGbdQvOFlhDiWpxwEolxbep
-fVfpKYGMNIQuOlmtTkNRDFTVMtVkEXYUDZKfEihbxXsSLGDcKSHSMXZxAturZVEQgismVAgMVVatqjBM
-rXeHaGdccPJMlqhVAePDyEoIRTLCwJpkNTuOjEKEvXaAGhWmhWPHCBMVPkcPklbGIvzMzOFplRUsvZbE
-vScmmoKktOUVOeKBcqVvoSsplqqssDvLiPqucbrxoNkodsbrZnvoDfyNGyUAURseEuJPUWsEiVCNcUNd
-sxzoRVpEFuFloqWLumNVJITKXnWnOlGpCaQgTLJYizixXoxAHHbodRtPHBbnSzZRZOmlWKOQqvHWAhDh
-cYBGRQsFwyesMILhiwjnvjeMIZnHYHYNrmOahjrVPuRgsxdfgUbKCZAVfcOizDeQLKiFQmQQUlDHnCQe
-lMnlLSrtXhmGDqISCgElUrZXbXjGGkdWadBbxzVojGQwyhAbWMhSKFFwoIqJfIDdZjUdfCYFkpDdIuWe
-aFIUFhnlsREthBRoaquSzBVVOPABfuAYZpoalZwNfZMPOptcoQYVUdRYlXuYChPAdRJgFgwPyTszSXIe
-qHRtMxyNlPGoBfpjxHnNvwIADmJmquLgMQGtpJAyvflZjFwAgIymerCTnVkjvqPKFVRscOqAhqvCqCjw
-BBojzXKIdphOVTFKhBpnIWYRfuqvQZgVMaqNBkYKzqGaEnBFKZukSLdPbXNmcZtMeykLwlLbZqaHayOb
-IWZvbxEXXnaozCHeyiYMnWqIAwJxhMIPDsgySMKhdBYmdrGdbJOfJralshwvhWlmatTsylewdimJEzph
-tuTzSGOkGDPPvltRVJPdHRPBTAsKWncfjjuHdlEVOeZIvVnUFHmyGTFDlMGVyAIdzLocbTXIHYTopIok
-UHFAVjEXPlsMoKTriyGnfeTlVzvGhVZzUAWWPdZNdIxKioQylFMJZmSToyRGsDJKJXQxPkINvmoHCVUc
-RIjImkWWxTnDLQiXdmHqQrWBuvguUUubGByTRnJfkNWxsSupcfIVgboDWzqYHEfAnIKCfdYUOslfXPax
-YnaJfNLqJgcxRjBmRpOYgNpZOpzMOCVIRiiXdIqqFxPJhQqJadKiCesOsZoWGWbbQSVRZUlbNZdzeUTE
-nhdMSCKCPbpWZguZHGkLiWCisjqnaLbJpbRFAHPjGbHOXKZQXoQQZohmVqjTcdWNhXEjPlLKnjpwbMPQ
-ybzDvGgkybXtbDmjQuyOrMrcYGRGGfuuPXzieaetSBidnSRPsLaXKGcxDkXmHbqMWZJXsQkwtojlxOeU
-KSIFdVvNEnOUmIZDdlnwtJcPBlcpRWNTazpzgItwJotSLWZruzrMlSGASMWDwOqTpeYYHaTHCCurPdwB
-AWzUtwblZXNrBYdjUoDacvmRVURqOzUPlnFISsZMFPtthnDHSsFgkYfsMtXFuNPhLTleWVrmelyFaemo
-bVIhEAxNwOUDQCOCDIBHsQlFxCbHErKiBsvQNjuIGnIzZiwoVTdUZnucSaKdHrxJeGQfTawFJefGJFFa
-GHzELfnGBmkZyorbbDDwhvEVeIYIGLPMEuZduqFjbeWbVfzVIRZNXwPLgcYUsevuhEQXfYcJshYnJaWz
-iqvlswEBRKNYEJidlzdWnQJpBtyjHYVpkQGzdYkeREqjhmmnUIbGZVnwwaMKqgXfURSICNxdteUSGhGZ
-UEEFhWRoTKGRwFmPpZPOsalsrNOlkTdXqGKoWlWkqJvYYrtLiTfhdItMbbhdumSYgCcQVUARnYFWkCsC
-jElZxrQHIlbTHFLOnrutlvyxzaSIdkJgeyMUnUmtXfnaIedbAInAuQssOQqBTLbvFRiqKqUSdUEmcRmN
-LvAxlgliymfbjTwDSqNTLcAEIerzpUShNKkuehciEAYeGJOFFcOvurJFUyfZhQqzfaneiBcrPhaphSCB
-StQiJvtoPhHcLUbriDUIfifVFnNtJfGlmcbQJSXsZfVjpbqnkMllUmHzLvEuSarSlNlNHsWvYlfhjMEA
-epYTjoRGZeAAtURFeDfDxTYmOmONuQQBdcdncFGjhHmKlwqmUWoXuIXIxaaXnNThgPGtIlynrUIPLQTG
-xXhattDrfBGbZRveKbgjzxJLdYREQlMeLtcIEUoyJocdAfUbymxuFLVjGkOQniiPParqoyQYfDYAQTkM
-WLicLxpEFkBbwlKrTyYilKTtYkpVGxtOjYmcBDOrwFhFiGutmpTyTarUbVUeSevBTdaPDpjRkaEmLJMg
-WsMhSGfIcBChcqrRKgKpjvGnFipjswgjetRtniMagakbCXAjpzWTtMlgZGCJwGyglpcLebrKWhgwJfWV
-qGifWNEpCtjuejHoyVCdIxzMYGnfoslgTNAJdtVBWDVoGLzHSAVBTnhNIvAOExQNiJOIPPiHkdaRbfaP
-ixDDoCDOOeAqvQJFxLWDICfGmufyxmaMshbvcrtjqqVtffZTnbtCOQfzRMGwOQEKaAmSWjnYdNgvdkmd
-dQmaKZSdqKNrnvJlcyVMKuNWmuoOeyKecgjXbmSqnpjwJEaDYoehEklEgJyiksGxdEKgfYRXQecRZgfe
-qKWGc"""
-result=""
-for index,each in enumerate(str2):
-    #  左右有且仅有3个大写字母
-    if each.islower() and str2[index-3:index+4].isupper():
-        result+=each
-print(result)
+##        return x*power1(x,y-1)
+##print(power1(2,3))
+#  递归函数
+#gcd(x, y)
+
+# 求解的是x,y中的最大的公约数
+##def gcd1(x,y):
+##    if x<y:  # x是最大的，y是最小的
+##        x,y=y,x
+##    # 求解最大的公约数
+##    if x%y==0 :
+##        return y
+##    else:
+##       gcd1(y,x%y)    
+##print(gcd1(12,18))
+##def find_divisor(a,b):
+##    '''这个函数用来求两个正整数的最大公约数'''
+## 
+##    #下面的操作保证a永远是较大的数，这样对于我们传参的要求就低了，传入数字的大小顺序无所谓
+##    if a<b:
+##        a,b=b,a
+##    #下面是基线条件，当余数为0时，b就是最大公约数
+##    if a%b==0:
+##        return b
+##    #不符合基线条件时，就要继续寻找最大公约数，但是参数要变成b和ab的余数，实现递归
+##    else:
+##        return find_divisor(b,a%b)
+##print(find_divisor(88,24))
+##
+##def   diguiqiujie(n):
+##    if n//2==0:
+##        return n%2
+##    else:
+##        return str(n%2)+str(diguiqiujie(n//2))
+##print(diguiqiujie(5))
+##def diguifenjie(n):
+##    global list1
+##    if n//10==0:
+##        list1.insert(0,n%10)
+##    else:
+##        list1.insert(0,n%10)
+##        n //=10
+##        diguifenjie(n)
+##list1=[];
+##diguifenjie(12345)
+##print(list1)
+##def huiwenzifuchuan(ch):
+##    length=len(ch)
+##    if  not ch[0]==ch[length-1]:
+##        return "不是回文字符串"
+##    elif length==2 and ch[0]==ch[1]:
+##        return "是回文字符串"
+##    else:
+##        return huiwenzifuchuan(ch[1:length-1])
+##print(huiwenzifuchuan("我是谁"))
+def  caculateYear(n):
+    if n==1:
+        return 10
+    else:
+        return 2+caculateYear(n-1)
+print(caculateYear(5))
+

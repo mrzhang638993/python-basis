@@ -1422,7 +1422,20 @@ for index,each in enumerate(str2):
     if each.islower() and str2[index-3:index+4].isupper():
         result+=each
 print(result)
-        
+
+# 递归求解的算法
+def find_divisor(a,b):
+    '''这个函数用来求两个正整数的最大公约数'''
+    #下面的操作保证a永远是较大的数，这样对于我们传参的要求就低了，传入数字的大小顺序无所谓
+    if a<b:
+        a,b=b,a
+    #下面是基线条件，当余数为0时，b就是最大公约数
+    if a%b==0:
+        return b
+    #不符合基线条件时，就要继续寻找最大公约数，但是参数要变成b和ab的余数，实现递归
+    else:
+        return find_divisor(b,a%b)
+print(find_divisor(88,24))
 
     
 
