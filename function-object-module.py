@@ -194,6 +194,9 @@ def feibonaqie(n):
         return 1
     else:
         return feibonaqie(n-1)+feibonaqie(n-2)
+
+#  汉罗塔游戏
+
         
 
 
