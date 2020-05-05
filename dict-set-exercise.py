@@ -95,4 +95,7 @@ set1=frozenset({1,2,3,4,5})
 print(set1)
 # 查询获取集合中的元素的个数
 print(len(set1))
+#  集合的增加操作和移除操作
+add
+remove
 
