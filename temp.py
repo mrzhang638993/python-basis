@@ -65,8 +65,61 @@
 ##else:
 ##    print("系统输入的不正确，请重新输入操作")
 #  创建一个不变元素的集合
-set1=frozenset({1,2,3,4,5})
-print(set1)
-print(len(set1))
-#set1 = {[1, 2]}
-set1 = set([1, 2])
+##set1=frozenset({1,2,3,4,5})
+##print(set1)
+##print(len(set1))
+###set1 = {[1, 2]}
+##set1 = set([1, 2])
+##import pickle
+##my_list=[123,3.14,'小甲鱼',['another list']]
+##pickle_file=open('my_list.pki','wb')
+##pickle.dump(my_list,pickle_file)
+##pickle_file.close()
+##import pickle
+##pickle_file=open('my_list.pki','rb')
+##my_list2=pickle.load(pickle_file)
+##pickle_file.close()
+##print(my_list2)
+##import os
+##try:
+##     f=open('我为什么是一个文件.txt','a')
+##     print(f.write('我存在了吗'))
+##     i=1+'1'
+##except OSError as  reason:
+##    print(reason)
+##finally:
+##     f.close()
+##try:
+##     with open('我为什么是一个文件.txt') as f:   #  with 语句会关注文件的状态的，对应的调用f.close的相关的方法的。
+##         print(f.write('我存在了'))
+##         i=1+'1'
+##         f.close()
+##except  OSError as  reason:
+##    print("出错了",reason)
+##import pickle
+##my_list=[123,3.14,'小甲鱼',['another list']]
+##pickle_file=open('good.pki','wb')
+##pickle.dump(my_list,pickle_file)
+##pickle_file.close()
+##import pickle
+##pickle_file=open("good.pki",'rb')
+##my_list2=pickle.load(pickle_file)
+##pickle_file.close()
+##print(my_list2)
+##import os
+##f=open("good.txt",'r',encoding='utf-8')
+##print(f.read(10))  #  获取文件指针的位置操作
+##print(f.tell())
+##f.close()
+##import os
+##f=open("OpenMe.mp3",'rb')
+##print(f.read())
+##f.close()
+import os
+f=open("OpenMe.mp3",'rb')
+content=f.read()
+f1=open("OpenMe.txt",'w')
+f1.write(str(content))
+f1.close()
+f.close()
+
