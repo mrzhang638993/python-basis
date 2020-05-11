@@ -1,3 +1,5 @@
+
+
 #False  True
 print(bool(250))
 print(bool("假"))
