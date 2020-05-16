@@ -197,6 +197,78 @@ def findFile(path,fileName):
                  findFile(os.path.join(path,each),fileName)   # 存在问题
 findFile(path,fileName)
 
+#
+"""
+ 编写一个程序，用户输入开始搜索的路径，查找该路径下（包含子文件夹内）所有的视频格式文件（要求查找mp4 rmvb, avi的格式即可），并把创建一个文件（vedioList.txt）存放所有找到的文件的路径，程序实现如图
+"""
+import os
+path=input("请输入待查找的初始目录:")
+# 创建一个列表存放带查找的视频格式
+style=['mp4','rmvb','avi']
+#遍历所有的文件，将找到的文件内容全部的增加到文件中
+f=open("vedioList.txt","w");
+def findAvFile(path,style):
+    content=""
+    if os.path.isfile(path):
+        for sty in  style:
+            if path.endswith(sty):
+                content +=path
+                content+="\n"
+                f.write(content)
+    else:
+        for each in os.listdir(path):
+            if os.path.isfile(each):
+                for sty in  style:
+                    if each.endswith(sty):
+                        content+=path+"\\"+each
+                        content+="\n"
+                        f.write(content)
+            else:  # 对应的是目录，需要进行目录的操作
+                findAvFile(os.path.join(path,each),style)
+findAvFile(path,style)
+f.close()
+
+"""
+编写一个程序，用户输入关键字，查找当前文件夹内（如果当前文件夹内包含文件夹，则进入文件夹继续搜索）所有含有该关键字的文本文件（.txt后缀），要求显示该文件所在的位置以及关键字在文件中的具体位置（第几行第几个字符）
+
+对于文件内容的检索和判断
+"""
+import os
+path=input("请输入待查找的初始目录:")
+content=input("请输入关键字:")
+def findContentInfile(path,content):
+    if os.path.isfile(path):
+        for num,val in enumerate(open(path,'rt')):
+            contents=val
+            position=[]
+            if not contents.find(content)==-1:
+                print("在文件【",path,"】中找到关键字【",content,"】")
+            while not contents.find(content)==-1:
+               position.add(contents.index(content))
+               contents=contents.replace(content,"",1)
+            if  len(position):
+                 print("关键字出现在第",num,"行","【",position,"】","个位置")
+    else:
+        for each in os.listdir(path):
+            if os.path.isfile(each):
+                for num,val in enumerate(open(path+"\\"+each,'rt')):
+                    contents=val
+                    position=[]
+                    if not contents.find(content)==-1:
+                        print("在文件【",path,"】中找到关键字【",content,"】")
+                    while not contents.find(content)==-1:
+                       position.add(contents.index(content))
+                       contents=contents.replace(content,"",1)
+                    if len(position):
+                       print("关键字出现在第",num,"行","【",position,"】","个位置")
+            else:  # 对应的是目录，需要进行目录的操作
+                findContentInfile(os.path.join(path,each),content)
+findContentInfile(path,content)
+
+
+        
+                
+
 
 
     

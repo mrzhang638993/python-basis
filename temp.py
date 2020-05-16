@@ -208,9 +208,9 @@
 ##        #  判断文件的大小操作和实现 getsize()
 ##        print(os.path.basename(each),"【",os.path.getsize(each),"bytes】")
 # 这个是只有两层的遍历的，多层的话，对应的需要采用函数递归的方式进行的
-import os 
-path=input("请输入带查找的目录:")
-fileName=input("请输入待查找的目标文件:")
+##import os 
+##path=input("请输入带查找的目录:")
+##fileName=input("请输入待查找的目标文件:")
 ##for each in os.listdir(path):
 ##    if os.path.isfile(each):
 ##        if each==fileName:
@@ -220,15 +220,73 @@ fileName=input("请输入待查找的目标文件:")
 ##            for each1 in os.listdir(each):
 ##                if os.path.isfile(each1) and each1==fileName:
 ##                    print(os.path.abspath(each)+"\\"+each1);
-
-def findFile(path,fileName):
-    if os.path.isfile(path) and path==fileName:
-           print(os.path.abspath(path))
+##
+##def findFile(path,fileName):
+##    if os.path.isfile(path) and path==fileName:
+##           print(os.path.abspath(path))
+##    else:
+##        for each in os.listdir(path):
+##            if os.path.isfile(os.path.join(path,each)):
+##                 if each==fileName:
+##                     print(os.path.abspath(path+"\\"+each))
+##            else:
+##                 findFile(os.path.join(path,each),fileName)   # 存在问题
+##findFile(path,fileName)
+##import os
+##path=input("请输入待查找的初始目录:")
+### 创建一个列表存放带查找的视频格式
+##style=['mp4','rmvb','avi']
+###遍历所有的文件，将找到的文件内容全部的增加到文件中
+##f=open("vedioList.txt","w");
+##def findAvFile(path,style):
+##    content=""
+##    if os.path.isfile(path):
+##        for sty in  style:
+##            if path.endswith(sty):
+##                content +=path
+##                content+="\n"
+##                f.write(content)
+##    else:
+##        for each in os.listdir(path):
+##            if os.path.isfile(each):
+##                for sty in  style:
+##                    if each.endswith(sty):
+##                        content+=path+"\\"+each
+##                        content+="\n"
+##                        f.write(content)
+##            else:  # 对应的是目录，需要进行目录的操作
+##                findAvFile(os.path.join(path,each),style)
+##findAvFile(path,style)
+##f.close()
+import os
+path=input("请输入待查找的初始目录:")
+content=input("请输入关键字:")
+def findContentInfile(path,content):
+    if os.path.isfile(path):
+        for num,val in enumerate(open(path,'rt')):
+            contents=val
+            position=[]
+            if not contents.find(content)==-1:
+                print("在文件【",path,"】中找到关键字【",content,"】")
+            while not contents.find(content)==-1:
+               position.add(contents.index(content))
+               contents=contents.replace(content,"",1)
+            if  len(position):
+                 print("关键字出现在第",num,"行","【",position,"】","个位置")
     else:
         for each in os.listdir(path):
-            if os.path.isfile(os.path.join(path,each)):
-                 if each==fileName:
-                     print(os.path.abspath(path+"\\"+each))
-            else:
-                 findFile(os.path.join(path,each),fileName)   # 存在问题
-findFile(path,fileName)
+            if os.path.isfile(each):
+                for num,val in enumerate(open(path+"\\"+each,'rt')):
+                    contents=val
+                    position=[]
+                    if not contents.find(content)==-1:
+                        print("在文件【",path,"】中找到关键字【",content,"】")
+                    while not contents.find(content)==-1:
+                       position.add(contents.index(content))
+                       contents=contents.replace(content,"",1)
+                    if len(position):
+                       print("关键字出现在第",num,"行","【",position,"】","个位置")
+            else:  # 对应的是目录，需要进行目录的操作
+                findContentInfile(os.path.join(path,each),content)
+findContentInfile(path,content)
+
