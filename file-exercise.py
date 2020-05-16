@@ -237,34 +237,32 @@ import os
 path=input("请输入待查找的初始目录:")
 content=input("请输入关键字:")
 def findContentInfile(path,content):
+    position=[]
     if os.path.isfile(path):
-        for num,val in enumerate(open(path,'rt')):
+        for num,val in enumerate( open(path,'rt',encoding="UTF-8") ):
             contents=val
-            position=[]
             if not contents.find(content)==-1:
                 print("在文件【",path,"】中找到关键字【",content,"】")
             while not contents.find(content)==-1:
-               position.add(contents.index(content))
+               position.append(contents.index(content))
                contents=contents.replace(content,"",1)
             if  len(position):
                  print("关键字出现在第",num,"行","【",position,"】","个位置")
     else:
         for each in os.listdir(path):
             if os.path.isfile(each):
-                for num,val in enumerate(open(path+"\\"+each,'rt')):
+                for num,val in enumerate( open(path+"\\"+each,'rt',encoding="UTF-8") ):
                     contents=val
-                    position=[]
                     if not contents.find(content)==-1:
                         print("在文件【",path,"】中找到关键字【",content,"】")
                     while not contents.find(content)==-1:
-                       position.add(contents.index(content))
+                       position.append(contents.index(content))
                        contents=contents.replace(content,"",1)
                     if len(position):
                        print("关键字出现在第",num,"行","【",position,"】","个位置")
             else:  # 对应的是目录，需要进行目录的操作
                 findContentInfile(os.path.join(path,each),content)
 findContentInfile(path,content)
-
 
         
                 
