@@ -297,26 +297,74 @@
 ##                findContentInfile(os.path.join(path,each),content)
 ##findContentInfile(path,content)
 #大量复杂的列表的话，可以使用pickle模块进行操作的。
-import pickle
-f=open('record.txt','rt')
-# 下面分段截取出来文本的内容
-content=f.read()
-list1=content.split("=")
-count=1
-for each in list1:
-    if  not each=="" and not each=='\n':  # each对应的是一个字符串的
-        list2=each.split("\n")
-        f=open('boy_'+str(count)+".txt",'wt')
-        f1=open('girl_'+str(count)+".txt",'wt')
-        for each1 in list2:
-            if not each1=='':
-                if not each1.find("小甲鱼:")==-1:
-                    f.write(each1.replace("小甲鱼:","")+"\n")
-                elif not each.find("小客服:")==-1:
-                    f1.write(each1.replace("小客服:","")+"\n")
-        f.close()
-        f1.close()
-        count +=1
-        
-        
-        
+##import pickle
+##f=open('record.txt','rt')
+### 下面分段截取出来文本的内容
+##content=f.read()
+##list1=content.split("=")
+##count=1
+##for each in list1:
+##    if  not each=="" and not each=='\n':  # each对应的是一个字符串的
+##        list2=each.split("\n")
+##        f=open('boy_'+str(count)+".txt",'wt')
+##        f1=open('girl_'+str(count)+".txt",'wt')
+##        for each1 in list2:
+##            if not each1=='':
+##                if not each1.find("小甲鱼:")==-1:
+##                    f.write(each1.replace("小甲鱼:","")+"\n")
+##                elif not each.find("小客服:")==-1:
+##                    f1.write(each1.replace("小客服:","")+"\n")
+##        f.close()
+##        f1.close()
+##        count +=1
+##        
+##try:
+##    for i in range(3):
+##        for j in range(3):
+##            if i==2:
+##                raise KeyboardInterrupt
+##            print(i,j)
+##except KeyboardInterrupt:
+##    print("退出了")
+##      
+##import random
+##secret = random.randint(1,10)
+##print('------------------我爱鱼C工作室------------------')
+##try:
+##    temp = input("不妨猜一下小甲鱼现在心里想的是哪个数字：")
+##    if temp.isdigit():
+##        guess = int(temp)
+##        while guess != secret:
+##            temp = input("哎呀，猜错了，请重新输入吧：")
+##            guess = int(temp)
+##            if guess == secret:
+##                print("我草，你是小甲鱼心里的蛔虫吗？！")
+##                print("哼，猜中了也没有奖励！")
+##            else:
+##                if guess > secret:
+##                    print("哥，大了大了~~~")
+##                else:
+##                    print("嘿，小了，小了~~~")
+##    else:
+##        raise TypeError
+##except TypeError as  reason:
+##    print("出错了","输入类型错误，需要的是数字")
+##except (EOFError,KeyboardInterrupt) as reason:
+##    print("输入未结束或者是强行中断异常")
+##print("游戏结束，不玩啦^_^")
+##def int_input():
+##    while True:
+##        number=input("请输入一个整数:")
+##        if number.isdigit():
+##            break
+##        else:
+##            print("出错了,您输入的不是整数!")
+##int_input()
+try:
+    #  解决方式，文件不存在的话，对应的创建一个新的文件即可实现错误处理的
+    f = open('My_File.txt','a') # 当前文件夹中并不存在"My_File.txt"这个文件T_T
+    print(f.read())
+except OSError as reason:
+    print('出错啦：' + str(reason))
+finally:
+    f.close()
