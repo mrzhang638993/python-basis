@@ -368,9 +368,16 @@
 ##    print('出错啦：' + str(reason))
 ##finally:
 ##    f.close()
+##try:
+##    number=int(input("请输入数据:"))
+##except  ValueError as reason:
+##    print("出错了:",reason)
+##else:
+##    print("没有任何异常!")
 try:
-    number=int(input("请输入数据:"))
-except  ValueError as reason:
-    print("出错了:",reason)
-else:
-    print("没有任何异常!")
+    with open('data.txt','w') as f:  #with语句对应的会执行自动的文件关闭操作的
+        for each in f:
+            print(each)
+except OSError as  reason:
+    print("出错了:"+str(reason))
+    
