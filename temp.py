@@ -258,34 +258,65 @@
 ##                findAvFile(os.path.join(path,each),style)
 ##findAvFile(path,style)
 ##f.close()
-import os
-path=input("请输入待查找的初始目录:")
-content=input("请输入关键字:")
-def findContentInfile(path,content):
-    position=[]
-    if os.path.isfile(path):
-        for num,val in enumerate( open(path,'rt',encoding="UTF-8") ):
-            contents=val
-            if not contents.find(content)==-1:
-                print("在文件【",path,"】中找到关键字【",content,"】")
-            while not contents.find(content)==-1:
-               position.append(contents.index(content))
-               contents=contents.replace(content,"",1)
-            if  len(position):
-                 print("关键字出现在第",num,"行","【",position,"】","个位置")
-    else:
-        for each in os.listdir(path):
-            if os.path.isfile(each):
-                for num,val in enumerate( open(path+"\\"+each,'rt',encoding="UTF-8") ):
-                    contents=val
-                    if not contents.find(content)==-1:
-                        print("在文件【",path,"】中找到关键字【",content,"】")
-                    while not contents.find(content)==-1:
-                       position.append(contents.index(content))
-                       contents=contents.replace(content,"",1)
-                    if len(position):
-                       print("关键字出现在第",num,"行","【",position,"】","个位置")
-            else:  # 对应的是目录，需要进行目录的操作
-                findContentInfile(os.path.join(path,each),content)
-findContentInfile(path,content)
-
+# 结果还需要进行修改,对应的显示的内容不是很正确的。出现在多少行的什么位置
+##import os
+##path=input("请输入待查找的初始目录:")
+##content=input("请输入关键字:")
+##def findContentInfile(path,content):
+##    position=[]
+##    if os.path.isfile(path):
+##        f=open(path,'rt',encoding="UTF-8")
+##        str1=f.read()
+##        f.close()
+##        if not str1.find(content,1)==-1:
+##             print("在文件【",path,"】中找到关键字【",content,"】")
+##        for num,val in enumerate(  ):
+##            contents=val
+##            while not contents.find(content)==-1:
+##               position.append(contents.index(content))
+##               contents=contents.replace(content,"",1)
+##        if  len(position):
+##            print("关键字出现在第",num,"行","【",for each in position,"】","行","个位置")
+##    else:
+##        for each in os.listdir(path):
+##            position=[]
+##            if os.path.isfile(each):
+##                f=open(path+"\\"+each,'rt',encoding="UTF-8")
+##                str1=f.read();
+##                f.close()
+##                if not str1.find(content,1)==-1:
+##                    print("在文件【",path+"\\"+each,"】中找到关键字【",content,"】")
+##                for num,val in enumerate( open(path+"\\"+each,'rt',encoding="UTF-8") ):
+##                    contents=val
+##                    while not contents.find(content)==-1:
+##                       position.append(contents.index(content))
+##                       contents=contents.replace(content,"",1)
+##                if len(position):
+##                    print("关键字出现在第","【",position,"】","行","个位置")
+##            else:  # 对应的是目录，需要进行目录的操作
+##                findContentInfile(os.path.join(path,each),content)
+##findContentInfile(path,content)
+#大量复杂的列表的话，可以使用pickle模块进行操作的。
+import pickle
+f=open('record.txt','rt')
+# 下面分段截取出来文本的内容
+content=f.read()
+list1=content.split("=")
+count=1
+for each in list1:
+    if  not each=="" and not each=='\n':  # each对应的是一个字符串的
+        list2=each.split("\n")
+        f=open('boy_'+str(count)+".txt",'wt')
+        f1=open('girl_'+str(count)+".txt",'wt')
+        for each1 in list2:
+            if not each1=='':
+                if not each1.find("小甲鱼:")==-1:
+                    f.write(each1.replace("小甲鱼:","")+"\n")
+                elif not each.find("小客服:")==-1:
+                    f1.write(each1.replace("小客服:","")+"\n")
+        f.close()
+        f1.close()
+        count +=1
+        
+        
+        
