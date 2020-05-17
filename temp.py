@@ -360,11 +360,17 @@
 ##        else:
 ##            print("出错了,您输入的不是整数!")
 ##int_input()
+##try:
+##    #  解决方式，文件不存在的话，对应的创建一个新的文件即可实现错误处理的
+##    f = open('My_File.txt','a') # 当前文件夹中并不存在"My_File.txt"这个文件T_T
+##    print(f.read())
+##except OSError as reason:
+##    print('出错啦：' + str(reason))
+##finally:
+##    f.close()
 try:
-    #  解决方式，文件不存在的话，对应的创建一个新的文件即可实现错误处理的
-    f = open('My_File.txt','a') # 当前文件夹中并不存在"My_File.txt"这个文件T_T
-    print(f.read())
-except OSError as reason:
-    print('出错啦：' + str(reason))
-finally:
-    f.close()
+    number=int(input("请输入数据:"))
+except  ValueError as reason:
+    print("出错了:",reason)
+else:
+    print("没有任何异常!")
