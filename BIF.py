@@ -50,6 +50,8 @@ class C:
         del self.size
         # self.__delattr__('size')
 
+    # 根据不同的操作，决定调用的是哪一个函数的。具体的可以实现封装的操作实现的。实现代码隔离实现操作的。
+    # 用户使用的话，就可以直接使用x对应的进行操作即可的。
     prop = property(getsize, setSize, delSize)
 
 
