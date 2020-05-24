@@ -12,7 +12,7 @@
 小客服的对话单独保存为girl_*.txt的文件（去掉“小客服:”）
 文件中总共有三段对话，分别保存为boy_1.txt, girl_1.txt，boy_2.txt, girl_2.txt, boy_3.txt, gril_3.txt共6个文件（提示：文件中不同的对话间已经使用“==========”分割）
 """
-import pickle
+import pickle_1
 f=open('record.txt','rt')
 # 下面分段截取出来文本的内容
 content=f.read()

@@ -5,16 +5,16 @@
 
 
 # 写文件
-import pickle
+import pickle_1
 my_list=[123,3.14,'小甲鱼',['another list']]
 pickle_file=open('good.pki','wb')
-pickle.dump(my_list,pickle_file)
+pickle_1.dump(my_list, pickle_file)
 pickle_file.close()
 #  下面是将文件报错到列表中
-import pickle
+import pickle_1
 mylist2=[]
 pickle_file=open("good.pki",'rb',encoding='utf-8')
-my_list2=pickle.load(pickle_file)
+my_list2=pickle_1.load(pickle_file)
 pickle_file.close()
 print(mylist2)
 #  迭代文件中的每一行数据

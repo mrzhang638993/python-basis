@@ -24,14 +24,14 @@ print(os.rmdir("E:\\A\\B"))
 # os.path模块
 # 下面是pickle 模块的使用
 # 写文件
-import pickle
+import pickle_1
 my_list=[123,3.14,'小甲鱼',['another list']]
 pickle_file=open('my_list.pki','wb')
-pickle.dump(my_list,pickle_file)
+pickle_1.dump(my_list, pickle_file)
 pickle_file.close()
 # 读取文件
 pickle_file=open('my_list.pki','rb')
-my_list2=pickle.load(pickle_file)
+my_list2=pickle_1.load(pickle_file)
 pickle_file.close()
 
 
