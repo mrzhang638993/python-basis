@@ -82,5 +82,6 @@ class Stack(list):
         return self.__getitem__(self.count() - 1)
 
 
+# 学习资源学习。
 stack = Stack()
 print(stack.isEmpty())
