@@ -61,3 +61,9 @@ for each in fibs:
         print(each)
     except Exception as reason:
         print(reason)
+fibs1 = Fibs(1000)
+for each in fibs1:
+    try:
+        print(each)
+    except Exception as reason:
+        print(reason)
