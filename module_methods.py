@@ -68,41 +68,33 @@ del test.x
 """
 定义一个类实现变量修改的历史的记录操作:MyDes
 """
-
+"""
 import time
-
-
 class Record:
     def __init__(self, value=None, name=None, doc=None):
         self.name = name
         self.doc = doc
         self.value = value
         self.f = open("record1.txt", 'a+')
-
     def __get__(self, instance, owner):
         self.f.write(str(self.name) + "  变量于北京时间"
                      + time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "被读取"
                      + self.name + "=" + str(self.value) + "\n")
         return self.value
-
     def __set__(self, instance, value):
         self.value = value
         self.f.write(str(self.name) + "  变量于北京时间"
                      + time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "被修改"
                      + self.name + "=" + str(self.value) + "\n")
-
     def __delete__(self, instance):
         self.f.write(str(self.name) + "  变量于北京时间"
                      + time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "被删除" + "\n")
         del self.name
         del self.f
 
-
 class Test:
     x = Record(10, 'x')
     y = Record(8.8, 'y')
-
-
 test = Test()
 print(test.x)
 print(test.y)
@@ -111,3 +103,53 @@ test.y = 1.23
 test.y = "i love Fishc.com"
 del test.x
 del test.y
+"""
+"""
+编写描述符 MyDes，使用文件来存储属性，
+属性的值会直接存储到对应的pickle（腌菜，还记得吗？）的文件中。
+如果属性被删除了，文件也会同时被删除，属性的名字也会被注销。
+#对应的属性文件会存储到对应的文件中进行操作管理和实现的
+"""
+"""
+import os
+import pickle
+import time
+class Record:
+    def __init__(self, value=None, name=None, doc=None):
+        self.name = name
+        self.doc = doc
+        self.value = value
+        self.f = open("record2.txt", 'a+')
+        # 需要根据属性名称生成一个泡菜文件的
+        self.pickle_file = open(self.name + ".pkl", 'wb')
+    def __get__(self, instance, owner):
+        self.f.write(str(self.name) + "  变量于北京时间"
+                     + time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "被读取"
+                     + self.name + "=" + str(self.value) + "\n")
+        return self.value
+    def __set__(self, instance, value):
+        self.value = value
+        self.f.write(str(self.name) + "  变量于北京时间"
+                     + time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "被修改"
+                     + self.name + "=" + str(self.value) + "\n")
+        pickle.dump(self.value, self.pickle_file)
+        self.pickle_file.flush()
+    def __delete__(self, instance):
+        self.f.write(str(self.name) + "  变量于北京时间"
+                     + time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()) + "被删除" + "\n")
+        self.pickle_file.close()
+        os.remove(self.name + ".pkl")
+        del self.name
+        self.f.close()
+class Test:
+    x = Record(10, 'x')
+    y = Record(8.8, 'y')
+test = Test()
+print(test.x)
+print(test.y)
+test.x = 123
+test.y = 1.23
+test.y = "i love Fishc.com"
+del test.x
+del test.y
+"""
