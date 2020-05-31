@@ -1,6 +1,6 @@
 class CountList:
     def __init__(self, *args):
-        self.values = [x for x in args]
+        self.values = [x for x in args]  # 列表推导式
         # 根据对应的索引位置创建字典
         self.count = {}.fromkeys(range(len(self.values)), 0)
 
