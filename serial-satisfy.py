@@ -122,29 +122,42 @@ while True:
         print(next(it))
     except StopIteration:
         break
-"""
-
-
 # 迭代器输出至今为止的所有的闰年的操作的
 class LeapYear:
     def __init__(self):
         self.year = 0
-
     def __next__(self):
         self.year += 1
         if self.year > 2020:
             raise StopIteration
         else:
             return self.year
-
     def __iter__(self):
         self.year = 0
         return self
-
-
 leapYear = LeapYear()
 it = iter(leapYear)
 while True:
     year = next(it)
     if year >= 2000 and ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)):
         print(year)
+# 迭代器的操作逻辑和实现逻辑
+class MyRev:
+    def __init__(self, value):
+        self.value = value
+        self.begin = len(value) - 1
+    def __iter__(self):
+        return self
+    def __next__(self):
+        value = self.value[self.begin]
+        if self.begin < 0:
+            raise StopIteration
+        else:
+            self.begin -= 1
+            return value
+myRev = MyRev('FishC')
+for i in myRev:
+    print(i, end=' ')
+"""
+# 下面是生成器的相关逻辑实现，需要进行关注操作的
+
