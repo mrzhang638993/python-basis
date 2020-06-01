@@ -113,5 +113,38 @@ print("======", myList.count)
 3.迭代器是不能回退的
 4.for 判断元素为空的话，对应的只需要获取到迭代器的StopIteration
 5.在 Python 原生支持的数据结构中，只有集合可以使用迭代器进行访问操作的
+6.体现出来所有的对应的和for循环类似的操作
+for each in range(5):
+    print(each)
+it = iter(range(5))
+while True:
+    try:
+        print(next(it))
+    except StopIteration:
+        break
 """
 
+
+# 迭代器输出至今为止的所有的闰年的操作的
+class LeapYear:
+    def __init__(self):
+        self.year = 0
+
+    def __next__(self):
+        self.year += 1
+        if self.year > 2020:
+            raise StopIteration
+        else:
+            return self.year
+
+    def __iter__(self):
+        self.year = 0
+        return self
+
+
+leapYear = LeapYear()
+it = iter(leapYear)
+while True:
+    year = next(it)
+    if year >= 2000 and ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)):
+        print(year)
