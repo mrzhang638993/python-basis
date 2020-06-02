@@ -158,6 +158,52 @@ class MyRev:
 myRev = MyRev('FishC')
 for i in myRev:
     print(i, end=' ')
+# 下面是生成器的相关的操作
+1.携程操作的逻辑实现是如下的：
+Python 是通过生成器来实现类似于协同程序的概念：生成器可以暂时挂起函数，并保留函数的局部变量等数据，然后在再次调用它的时候，从上次暂停的位置继续执行下去。
+2.生成器所能实现的任何操作都可以由迭代器来代替吗，是对的。生成器死迭代器的一种实现的。
+3.是的，都可以。因为生成器事实上就是基于迭代器来实现的，生成器只需要一个 yield 语句即可，但它内部会自动创建 __iter__() 和 __next__() 方法。
+4.将一个函数改造为生成器，说白了就是把什么语句改为 yield 语句？对应的是return语句实现的
+5.说到底，生成器的最大作用是什么？使得函数可以“保留现场”，当下一次执行该函数是从上一次结束的地方开始，而不是重头再来。
+6. 对应的是属于迭代操作的业务逻辑和实现的
+def get_primes(number):
+    while True:   # 对应的是迭代作用实现的
+        if is_prime(number):
+            yield number
+        number += 1
+7. 下面是携程生成器的函数操作逻辑
+def myRev(data):
+    length = len(data)
+    while True:
+        if length > 0:
+            yield data[length - 1]
+            length -= 1
+for i in myRev("FishC"):
+    print(i, end='')
+8.
+10 以内的素数之和是：2 + 3 + 5 + 7 = 17，那么请编写程序，计算 2000000 以内的素数之和？
+import math
+def getPrime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+def prime(number):
+    i = 0
+    while True:
+        if i <= number:
+            if getPrime(i):
+                yield i
+            i += 1
+        else:
+            break
+count = 0
+# prime(2000000) 对应的实际上就是一个集合的数据的。对应的是一个迭代器的逻辑实现的
+for num in prime(2000000):
+    count += num
+print(count)
 """
-# 下面是生成器的相关逻辑实现，需要进行关注操作的
+
 
