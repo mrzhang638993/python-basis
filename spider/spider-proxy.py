@@ -1,61 +1,45 @@
-# 使用有道词典进行翻译
-import gzip
-import json
-from io import BytesIO
-from urllib import parse
 from urllib import request
-import  time
+
+import brotli
+import  random
 
 """
-使用代理服务器进行数据的代理操作和实现
+1.使用代理方式访问，需要增加头信息的
 """
-while True:
-    con = input("请输入需要翻译的内容:输入q!退出程序")
-    if con == 'q!':
-        break
-    else:
-        url = "http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule"
-        data = {}
-        headers = {}
-        headers['Accept'] = 'application/json, text/javascript, */*; q=0.01'
-        headers['Accept-Encoding'] = 'gzip, deflate'
-        headers['Accept-Language'] = 'zh-CN,zh;q=0.9'
-        headers['Connection'] = 'keep-alive'
-        headers['Content-Length'] = '237'
-        headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
-        headers[ \
-            'Cookie'] = 'OUTFOX_SEARCH_USER_ID=1734023566@10.108.160.17; JSESSIONID=aaaQf0xlyKo3FdOA9BRkx; OUTFOX_SEARCH_USER_ID_NCOO=219410896.8655732; ___rl__test__cookies=1592017877920'
-        headers['Host'] = 'fanyi.youdao.com'
-        headers['Origin'] = 'http://fanyi.youdao.com'
-        headers['Referer'] = 'http://fanyi.youdao.com/'
-        headers[ \
-            'User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
-        headers['X-Requested-With'] = 'XMLHttpRequest'
-        data['i'] = con
-        data['from'] = "AUTO"
-        data['to'] = "AUTO"
-        data['smartresult'] = 'dict'
-        data['client'] = 'fanyideskweb'
-        data['salt'] = '15920178779302'
-        data['sign'] = '14bec33cc4681dd9bf4212c25c475214'
-        data['ts'] = '1592017877930'
-        data['bv'] = 'c74c03c52496795b65595fdc27140f0f'
-        data['doctype'] = 'json'
-        data['version'] = '2.1'
-        data['keyfrom'] = 'fanyi.web'
-        data['action'] = 'FY_BY_REALTlME'
-        # uniode 转化为utf-8的形式
-        try:
-            data = parse.urlencode(data).encode("utf-8")
-            req = request.Request(url=url, data=data, headers=headers)
-            response = request.urlopen(req, timeout=200)
-            content = response.read()
-            buff = BytesIO(content)
-            f = gzip.GzipFile(fileobj=buff)
-            html = f.read().decode('utf-8')
-            content = json.loads(html)
-            print("翻译的结果是:%s" % (content['translateResult'][0][0]['tgt']))
-            # 等待5秒中之后才可以执行后续的操作的
-            time.sleep(5)
-        except Exception as reason:
-            print(reason)
+url = "https://www.whatismyip.com/"
+headers = {}
+iplist=['192.168.1.101:80']
+headers['authority'] = 'www.whatismyip.com'
+headers['method'] = 'GET'
+headers['path'] = '/'
+headers['scheme'] = 'https'
+headers[
+    'accept'] = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+headers['accept-encoding'] = 'gzip, deflate, br'
+headers['accept-language'] = 'zh-CN,zh;q=0.9'
+headers['cache-control'] = 'max-age=0'
+headers[
+    'cookie'] = '__cfduid=dfb3a167048046dedf70a3f5f6907c01f1592033774; dwqa_anonymous=kl7qcEv2ExYi4160oQsSJBzu8ZeA4g2QQBfs5kkKpFl; session_id=d33d0f5f-dd34-4bf3-9933-4be691e20642; _ga=GA1.2.1891763902.1592033779; _gid=GA1.2.404374399.1592033779; cto_bidid=EgIpXl81MVIxcGFMcWF0JTJGUlQlMkIlMkZWSWJYRnRnMzBVMWFCRXpSZUVyeHlNcVlYMDgwU3d1WWVKdXVEc0RJZHpHSkdXSFA3U2dHU3RHa3ZTNHpvWEM2VnRCR1FDczBwanROVTZsZ1ZYZnpJcjNTRkFGMCUzRA; cto_bundle=Rya_pV83c2NhZ0NRVFlJV0FoaHNmYlAwQTFBQTZ1enRGUlpTWXpRS0VGczkzVDJFbkZFckE2dlRqRVkxdFZ0TXNwVlZ5bloweTc3dkVGTkkweW9oR2ZxV3lqNDNPWldMSW1RMXRJWEloVWkyM0R4JTJCTXRhZEh3ZTRZQWtMRmpsYW94SVpab3M0dURja2hnTnhhNWVSWmtFa1dhZyUzRCUzRA; __gads=ID=f82c837e7d139f23:T=1592033780:S=ALNI_MaH_Fmtj0mKduzrUGKbgFqPwgTO2A; _gat=1'
+headers['sec-fetch-dest'] = 'document'
+headers['sec-fetch-mode'] = 'navigate'
+headers['sec-fetch-site'] = 'none'
+headers['sec-fetch-user'] = '?1'
+headers['upgrade-insecure-requests'] = '1'
+headers[
+    'user-agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36'
+#  步骤一：创建代理服务器
+req = request.Request(url=url, headers=headers, method='GET')
+proxy_support = request.ProxyHandler({'http': random.choice(iplist)})
+# 步骤二： 创建opener
+opener = request.build_opener(proxy_support)
+# opener.addheaders()
+# 步骤三：安装opener
+request.install_opener(opener)
+# 开始代码的访问操作
+response = opener.open(req)
+encoding = response.getheader('Content-Encoding')
+if encoding == 'br':
+    html = response.read()
+    content = brotli.decompress(html).decode('UTF-8')
+    # 对应的怎么从html文档中获取到相关的内容过滤操作需要对应的正则和相关的匹配操作的
+    print(content)
