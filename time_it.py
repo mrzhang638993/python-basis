@@ -8,9 +8,16 @@ print(dir(timeit))
 print(timeit.__all__)
 # 对应的是该模块的源代码属性信息,对应的是源代码的位置
 print(timeit.__file__)
+# 查看相关的模块的帮助文件
+print(help(timeit))
 #  from  timeit  import * 导入的是all属性中的所有的函数信息的，
 #  其他的是无法导入的,对应的是对外暴露的所有的方法和属性信息的
 from timeit import *
 print(timeit)
 print(Timer)
-
+# 快速的提高代码的技巧：
+"""
+1.不断的代码的编写
+2.阅读其他人的代码
+3.
+"""
