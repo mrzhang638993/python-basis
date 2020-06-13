@@ -1,14 +1,14 @@
+import random
 from urllib import request
 
 import brotli
-import  random
 
 """
 1.使用代理方式访问，需要增加头信息的
 """
 url = "https://www.whatismyip.com/"
 headers = {}
-iplist=['192.168.1.101:80']
+iplist = ['192.168.1.101:80']
 headers['authority'] = 'www.whatismyip.com'
 headers['method'] = 'GET'
 headers['path'] = '/'
