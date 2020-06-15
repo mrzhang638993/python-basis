@@ -4,7 +4,7 @@ import tkinter as tk
 class App:
     def __init__(self, master):
         frame = tk.Frame(master)
-        # 调整框架的位置
+        # 调整框架的位置,frame的主要的作用是实现区分模块的作用的
         frame.pack(side=tk.LEFT, padx=20, pady=30)
         self.hi_there = tk.Button(frame,
                                   text="打招呼",
